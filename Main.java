@@ -1,6 +1,8 @@
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
@@ -16,7 +18,7 @@ public class Main {
 	//path del file chooser
 	public static final String PATH = System.getProperty("user.home") + "/siti/euterpe/ftp/foto-img";
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 
 		//Seleziona tutti i file da inserire nella pagina
 
@@ -26,9 +28,11 @@ public class Main {
 		int result = fileChooser.showOpenDialog(new JFrame());
 		if (result == JFileChooser.APPROVE_OPTION) {
 
+            PrintWriter writer = new PrintWriter("output.html");
+
 			File[] selectedFiles = fileChooser.getSelectedFiles();
 
-			System.out.println("<div class=\"container\">");
+			writer.println("<div class=\"container\">");
 
 			int i = 0;
 
@@ -45,36 +49,40 @@ public class Main {
 				}
 
 				if (i%3 == 0) {
-					System.out.println("<div class=\"row\">");
+					writer.println("<div class=\"row\">");
 				}
 
-				System.out.println("<div class=\"col-sm-4\">");
+				writer.println("<div class=\"col-sm-4\">");
 
 				//crea nuova finestra delle dimensioni specificate
-				System.out.println("<a onclick=\"window.open('"+ ROOT1 + nomeFile +"','name','width="+img.getWidth()+",height="+img.getHeight()+"')\">");
+				writer.println("<a onclick=\"window.open('"+ ROOT1 + nomeFile +"','name','width="+img.getWidth()+",height="+img.getHeight()+"')\">");
 
 				//crea nuova tab o finestra
-				//System.out.print("<a target=\"_blank\" href =\"" + ROOT1 + nomeFile + "\">");
+				//writer.print("<a target=\"_blank\" href =\"" + ROOT1 + nomeFile + "\">");
 
-				System.out.println("<img src=\"" + ROOT2 + nomeFile + "\" />\n</a>");
+				writer.println("<img src=\"" + ROOT2 + nomeFile + "\" />\n</a>");
 
-				System.out.println("</div>");
+				writer.println("</div>");
 
 				if (i%3 == 2) {
-					System.out.println("</div>");
-					System.out.println("<p> </p>");
+					writer.println("</div>");
+					writer.println("<p> </p>");
 				}
 
 			}
 
 			if (i%3 != 0) {
-				System.out.println("</div>");
-				System.out.println("<p> </p>");
+				writer.println("</div>");
+				writer.println("<p> </p>");
 			}
 
-			System.out.println("</div>");
+			writer.println("</div>");
+
+            writer.close();
 
 		}
+
+		System.out.println("DONE!!");
 
 	}
 
