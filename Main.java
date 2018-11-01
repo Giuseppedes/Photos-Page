@@ -12,11 +12,11 @@ import javax.swing.JFrame;
 public class Main {
 
 	//img ad alta risoluzione
-	public static final String ROOT1 = "../foto-img/20/orig/";
+	public static final String ROOT1 = "../foto-img/28-concerto/orig/";
 	//img a bassa risoluzione
-	public static final String ROOT2 = "../foto-img/20/small/";
+	public static final String ROOT2 = "../foto-img/28-concerto/small/";
 	//path del file chooser
-	public static final String PATH = System.getProperty("user.home") + "/siti/euterpe/ftp/foto-img";
+	public static final String PATH = System.getProperty("user.home") + "/Documents/siti/euterpe/ftp/foto-img";
 
 	public static void main(String[] args) throws FileNotFoundException {
 
@@ -83,6 +83,8 @@ public class Main {
 		}
 
 		System.out.println("DONE!!");
+
+		System.exit(0);
 
 	}
 
