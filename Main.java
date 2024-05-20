@@ -16,7 +16,7 @@ public class Main {
 	//img a bassa risoluzione
 	public static final String ROOT2 = "../foto-img/SPECIFIC_DIRECTORY/small/";
 	//path del file chooser
-	public static final String PATH = System.getProperty("user.home") + "/Git/Sito-Euterpe/foto-img";
+	public static final String PATH = System.getProperty("user.home") + "/Git/Sito-Euterpe/html/foto-img";
 
 	public static void main(String[] args) throws FileNotFoundException {
 
